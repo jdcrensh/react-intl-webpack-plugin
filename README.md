@@ -1,6 +1,8 @@
-# react-intl-webpack-plugin
+# @jdcrensh/react-intl-webpack-plugin
 
 This plugin helps when using react-intl for internationalization of react apps.
+
+This fork changes the format of the resulting JSON file to be a simple key-value object.
 
 ## Workflow
 
@@ -13,7 +15,7 @@ This plugin helps when using react-intl for internationalization of react apps.
 
 ## Installation
 
-`npm install react-intl-webpack-plugin --save-dev`
+`npm install @jdcrensh/react-intl-webpack-plugin --save-dev`
 
 - this works only with babel-loader >= 6.4.0
 - you will need also the babel plugin `babel-plugin-react-intl`

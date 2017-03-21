@@ -1,15 +1,15 @@
 {
-    "name": "@jdcrensh/react-intl-webpack-plugin",
-    "version": "0.0.3",
-    "author": "Jon Crenshaw <jdcrensh@gmail.com>",
-    "description": "ReactIntlPlugin for webpack",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/jdcrensh/react-intl-webpack-plugin.git"
-    },
-    "dependencies": {
-        "lodash.reduce": "^4.6.0",
-        "lodash.sortby": "^4.7.0"
-    }
+  "name": "@jdcrensh/react-intl-webpack-plugin",
+  "version": "0.1.0",
+  "author": "Jon Crenshaw <jdcrensh@gmail.com>",
+  "description": "ReactIntlPlugin for webpack",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdcrensh/react-intl-webpack-plugin.git"
+  },
+  "dependencies": {
+    "lodash.reduce": "^4.6.0",
+    "lodash.sortby": "^4.7.0"
+  }
 }

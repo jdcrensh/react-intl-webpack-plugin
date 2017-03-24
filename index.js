@@ -6,7 +6,7 @@ function collapseWhitespace(str) {
 }
 
 function ReactIntlPlugin(options) {
-  this.options = options;
+  this.options = options || {};
 }
 
 ReactIntlPlugin.prototype.apply = function (compiler) {

@@ -25,7 +25,7 @@ ReactIntlPlugin.prototype.apply = function (compiler) {
     var jsonMessages = _reduce(_sortBy(messages, 'id'), function (result, m) {
       if (m.defaultMessage) {
         m.defaultMessage = m.defaultMessage.trim();
-        if (options.collapseWhitespace) {
+        if (this.options.collapseWhitespace) {
           defaultMessage = collapseWhitespace(defaultMessage);
         }
       }

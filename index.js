@@ -10,7 +10,7 @@ function ReactIntlPlugin(options) {
 }
 
 ReactIntlPlugin.prototype.apply = function (compiler) {
-
+  var _this = this;
   var messages = [];
 
   compiler.plugin('compilation', function (compilation) {
@@ -22,10 +22,11 @@ ReactIntlPlugin.prototype.apply = function (compiler) {
   });
 
   compiler.plugin('emit', function (compilation, callback) {
+    
     var jsonMessages = _reduce(_sortBy(messages, 'id'), function (result, m) {
       if (m.defaultMessage) {
         m.defaultMessage = m.defaultMessage.trim();
-        if (this.options.collapseWhitespace) {
+        if (_this.options.collapseWhitespace) {
           defaultMessage = collapseWhitespace(defaultMessage);
         }
       }

@@ -14,23 +14,22 @@ ReactIntlPlugin.prototype.apply = function (compiler) {
   var messages = [];
 
   compiler.plugin('compilation', function (compilation) {
-    compilation.plugin('normal-module-loader', function (context, module) {
-      context['metadataReactIntlPlugin'] = function (metadata) {
+    compilation.plugin('normal-module-loader', function (context) {
+      context.metadataReactIntlPlugin = function (metadata) {
         messages = messages.concat(metadata['react-intl'].messages);
       };
     });
   });
 
   compiler.plugin('emit', function (compilation, callback) {
-    
     var jsonMessages = _reduce(_sortBy(messages, 'id'), function (result, m) {
       if (m.defaultMessage) {
         m.defaultMessage = m.defaultMessage.trim();
         if (_this.options.collapseWhitespace) {
-          defaultMessage = collapseWhitespace(defaultMessage);
+          m.defaultMessage = collapseWhitespace(m.defaultMessage);
         }
+        result[m.id] = m.defaultMessage;
       }
-      result[m.id] = defaultMessage;
       return result;
     }, {});
 

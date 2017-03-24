@@ -51,6 +51,10 @@ module: {
 
 - the generated file is called `reactIntlMessages.json`
 
+## Options
+
+`collapseWhitespace` (boolean): If true, collapses all inner whitespace and newlines. Useful for ES6 multiline template literals.
+
 ## Notes
 
 - Keep in mind that as long as you use webpack-dev-server all assets are generated in memory. To access those assets use either:

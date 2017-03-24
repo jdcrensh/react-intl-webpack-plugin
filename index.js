@@ -1,16 +1,21 @@
 var _reduce = require('lodash.reduce');
 var _sortBy = require('lodash.sortby');
 
+function collapseWhitespace(str) {
+  return str.replace(/[\s\n]+/g, ' ');
+}
+
 function ReactIntlPlugin(options) {
+  this.options = options;
 }
 
 ReactIntlPlugin.prototype.apply = function (compiler) {
 
   var messages = [];
 
-  compiler.plugin("compilation", function (compilation) {
-    compilation.plugin("normal-module-loader", function (context, module) {
-      context["metadataReactIntlPlugin"] = function (metadata) {
+  compiler.plugin('compilation', function (compilation) {
+    compilation.plugin('normal-module-loader', function (context, module) {
+      context['metadataReactIntlPlugin'] = function (metadata) {
         messages = messages.concat(metadata['react-intl'].messages);
       };
     });
@@ -18,7 +23,13 @@ ReactIntlPlugin.prototype.apply = function (compiler) {
 
   compiler.plugin('emit', function (compilation, callback) {
     var jsonMessages = _reduce(_sortBy(messages, 'id'), function (result, m) {
-      result[m.id] = m.defaultMessage;
+      if (m.defaultMessage) {
+        m.defaultMessage = m.defaultMessage.trim();
+        if (options.collapseWhitespace) {
+          defaultMessage = collapseWhitespace(defaultMessage);
+        }
+      }
+      result[m.id] = defaultMessage;
       return result;
     }, {});
 
@@ -38,4 +49,4 @@ ReactIntlPlugin.prototype.apply = function (compiler) {
 };
 
 module.exports = ReactIntlPlugin;
-module.exports.metadataContextFunctionName = "metadataReactIntlPlugin";
+module.exports.metadataContextFunctionName = 'metadataReactIntlPlugin';

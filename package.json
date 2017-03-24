@@ -1,6 +1,6 @@
 {
   "name": "@jdcrensh/react-intl-webpack-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Jon Crenshaw <jdcrensh@gmail.com>",
   "description": "ReactIntlPlugin for webpack",
   "license": "MIT",

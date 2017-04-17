@@ -1,5 +1,4 @@
-var _reduce = require('lodash.reduce');
-var _sortBy = require('lodash.sortby');
+var sortBy = require('lodash.sortby');
 
 function collapseWhitespace(str) {
   return str.replace(/[\s\n]+/g, ' ');
@@ -7,10 +6,15 @@ function collapseWhitespace(str) {
 
 function ReactIntlPlugin(options) {
   this.options = options || {};
+  if (this.options.sortKeys == null) {
+    this.options.sortKeys = true;
+  }
+  if (this.options.collapseWhitespace == null) {
+    this.options.collapseWhitespace = false;
+  }
 }
 
 ReactIntlPlugin.prototype.apply = function (compiler) {
-  var _this = this;
   var messages = [];
 
   compiler.plugin('compilation', function (compilation) {
@@ -22,16 +26,20 @@ ReactIntlPlugin.prototype.apply = function (compiler) {
   });
 
   compiler.plugin('emit', function (compilation, callback) {
-    var jsonMessages = _reduce(_sortBy(messages, 'id'), function (result, m) {
-      if (m.defaultMessage) {
-        m.defaultMessage = m.defaultMessage.trim();
-        if (_this.options.collapseWhitespace) {
-          m.defaultMessage = collapseWhitespace(m.defaultMessage);
+    messages = this.options.sortKeys ? sortBy(messages, 'id') : messages;
+    var jsonMessages = messages.reduce(
+      function (result, m) {
+        if (m.defaultMessage) {
+          m.defaultMessage = m.defaultMessage.trim();
+          if (this.options.collapseWhitespace) {
+            m.defaultMessage = collapseWhitespace(m.defaultMessage);
+          }
+          result[m.id] = m.defaultMessage;
         }
-        result[m.id] = m.defaultMessage;
-      }
-      return result;
-    }, {});
+        return result;
+      }.bind(this),
+      {}
+    );
 
     var jsonString = JSON.stringify(jsonMessages, undefined, 2);
 

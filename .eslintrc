@@ -3,6 +3,6 @@
   "rules": {
     "func-names": "off",
     "no-param-reassign": "off",
-    "no-underscore-dangle": "off"
+    "vars-on-top": "off"
   }
 }

@@ -1,8 +1,14 @@
-# @jdcrensh/react-intl-webpack-plugin
+# @climate/react-intl-webpack-plugin
 
 This plugin helps when using react-intl for internationalization of react apps.
 
-This fork changes the format of the resulting JSON file to be a simple key-value object.
+## Fork
+
+This fork adds a few options for generating the JSON output:
+
+* Changes JSON output to be simple key-value pairs
+* Orders outputted keys alphabetically
+* Removes all whitespace from values, i.e. spaces and newlines in multiline ES6 strings.
 
 ## Workflow
 
@@ -15,45 +21,60 @@ This fork changes the format of the resulting JSON file to be a simple key-value
 
 ## Installation
 
-`npm install @jdcrensh/react-intl-webpack-plugin --save-dev`
+`yarn add -D @climate/react-intl-webpack-plugin`
+or
+`npm install @climate/react-intl-webpack-plugin --save-dev`
 
 - this works only with babel-loader >= 6.4.0
 - you will need also the babel plugin `babel-plugin-react-intl`
 
 webpack.config.js:
 - add the plugin
-```
-var ReactIntlPlugin=require('react-intl-webpack-plugin');
-...
+```javascript
+var ReactIntlPlugin = require('react-intl-webpack-plugin');
+// ...
 plugins: [
-         ...
-          new ReactIntlPlugin()
-         ],
+  // ...
+  new ReactIntlPlugin({
+    // see options section
+  })
+],
 ```
 - modify your babel-loader to contain the `metadataSubscribers` option
-```
+```javascript
 module: {
-        loaders: [
-                  ...
-            {
-                test: /\.js?$/, loader: 'babel-loader',
-                query: {
-                    "cacheDirectory": true,
-                    "metadataSubscribers":[ReactIntlPlugin.metadataContextFunctionName],
-                    "plugins": ["transform-runtime",
-                        ["react-intl", {
-                            "enforceDescriptions": false
-                        }]],
-                    "presets": ['react', "es2015", "stage-1"]
-                }
-            },
+  // ...
+  rules: [
+    // ...
+    {
+      test: /\.jsx?$/,
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          presets: [['es2015', { 'modules': false }], 'react', 'stage-0'],
+          plugins: [
+            ['react-intl', {
+              messagesDir: path.resolve(__dirname, 'dist', 'i18n')
+            }]
+          ],
+          metadataSubscribers: [ReactIntlPlugin.metadataContextFunctionName],
+          cacheDirectory: true
+        }
+      }]
+    }
+  ]
+}
 ```
 
-- the generated file is called `reactIntlMessages.json`
+- the generated file is called `<messagesDir>/reactIntlMessages.json`
 
 ## Options
 
-`collapseWhitespace` (boolean): If true, collapses all inner whitespace and newlines. Useful for ES6 multiline template literals.
+`sortKeys` (boolean, default `true`): If true, sorts JSON output by message id
+
+`flatOutput` (boolean, default `false`): If true, outputs as a simple key-value pair, i.e. `{'key1': 'text', 'key2': 'text'}`
+
+`collapseWhitespace` (boolean, default `false`): If true, collapses all inner whitespace and newlines. Useful for ES6 multiline template literals.
 
 ## Notes
 

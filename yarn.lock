@@ -67,6 +67,13 @@ babel-code-frame@^6.16.0:
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+babel-plugin-lodash@^3.2.11:
+  version "3.2.11"
+  resolved "https://registry.yarnpkg.com/babel-plugin-lodash/-/babel-plugin-lodash-3.2.11.tgz#21c8fdec9fe1835efaa737873e3902bdd66d5701"
+  dependencies:
+    glob "^7.1.1"
+    lodash "^4.17.2"
+
 balanced-match@^0.4.1:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"
@@ -434,7 +441,7 @@ generate-object-property@^1.1.0:
   dependencies:
     is-property "^1.0.0"
 
-glob@^7.0.0, glob@^7.0.3, glob@^7.0.5:
+glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
   dependencies:
@@ -602,15 +609,11 @@ lodash.cond@^4.3.0:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/lodash.cond/-/lodash.cond-4.5.2.tgz#f471a1da486be60f6ab955d17115523dd1d255d5"
 
-lodash.reduce@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.reduce/-/lodash.reduce-4.6.0.tgz#f1ab6b839299ad48f784abbf476596f03b914d3b"
-
 lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
 
-lodash@^4.0.0, lodash@^4.3.0:
+lodash@^4.0.0, lodash@^4.17.2, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 

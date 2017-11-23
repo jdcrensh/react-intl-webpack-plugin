@@ -1,8 +1,12 @@
-# @climate/react-intl-webpack-plugin
+# @MmtBkn/react-intl-webpack-plugin
 
 This plugin helps when using react-intl for internationalization of react apps.
-
 ## Fork
+
+There should be a way to live reload when message changes. Let's imlement it here. 
+Note, It's not implemented, yet!
+
+## Fork @climate
 
 This fork adds a few options for generating the JSON output:
 

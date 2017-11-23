@@ -1,12 +1,12 @@
 {
-  "name": "@jdcrensh/react-intl-webpack-plugin",
+  "name": "react-intl-webpack-plugin-live-reload",
   "version": "0.1.5",
-  "author": "Jon Crenshaw <jdcrensh@gmail.com>",
+  "author": "Muhammet Bakan <mmtbkn@gmail.com>",
   "description": "ReactIntlPlugin for webpack",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jdcrensh/react-intl-webpack-plugin.git"
+    "url": "https://github.com/MmtBkn/react-intl-webpack-plugin-live-reload.git"
   },
   "dependencies": {
     "lodash.sortby": "^4.7.0"

@@ -1,8 +1,12 @@
-# @climate/react-intl-webpack-plugin
+# @MmtBkn/react-intl-webpack-plugin
 
-This plugin helps when using react-intl for internationalization of react apps.
-
+Output file name is now changeable. 
 ## Fork
+
+There should be a way to live reload when message changes. Let's imlement it here. 
+Note, It's not implemented, yet!
+
+## Fork @climate
 
 This fork adds a few options for generating the JSON output:
 
@@ -75,6 +79,8 @@ module: {
 `flatOutput` (boolean, default `false`): If true, outputs as a simple key-value pair, i.e. `{'key1': 'text', 'key2': 'text'}`
 
 `collapseWhitespace` (boolean, default `false`): If true, collapses all inner whitespace and newlines. Useful for ES6 multiline template literals.
+
+`outputFileName` (string, default  `reactIntlMessages.json`): Name of output file
 
 ## Notes
 

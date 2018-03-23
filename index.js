@@ -12,6 +12,9 @@ function ReactIntlPlugin(options) {
   if (this.options.collapseWhitespace == null) {
     this.options.collapseWhitespace = false;
   }
+  if (this.options.outputFileName == null) {
+    this.options.outputFileName = 'reactIntlMessages.json';
+  }
 }
 
 ReactIntlPlugin.prototype.apply = function (compiler) {
@@ -43,7 +46,7 @@ ReactIntlPlugin.prototype.apply = function (compiler) {
 
     var jsonString = JSON.stringify(jsonMessages, undefined, 2);
 
-    compilation.assets['reactIntlMessages.json'] = {
+    compilation.assets[this.options.outputFileName] = {
       source: function () {
         return jsonString;
       },

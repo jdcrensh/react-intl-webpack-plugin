@@ -1,4 +1,4 @@
-# @climate/react-intl-webpack-plugin
+# @jdcrensh/react-intl-webpack-plugin
 
 This plugin helps when using react-intl for internationalization of react apps.
 
@@ -21,9 +21,9 @@ This fork adds a few options for generating the JSON output:
 
 ## Installation
 
-`yarn add -D @climate/react-intl-webpack-plugin`
+`yarn add -D @jdcrensh/react-intl-webpack-plugin`
 or
-`npm install @climate/react-intl-webpack-plugin --save-dev`
+`npm install @jdcrensh/react-intl-webpack-plugin --save-dev`
 
 - this works only with babel-loader >= 6.4.0
 - you will need also the babel plugin `babel-plugin-react-intl`
@@ -31,7 +31,7 @@ or
 webpack.config.js:
 - add the plugin
 ```javascript
-var ReactIntlPlugin = require('react-intl-webpack-plugin');
+var ReactIntlPlugin = require('@jdcrensh/react-intl-webpack-plugin');
 // ...
 plugins: [
   // ...
